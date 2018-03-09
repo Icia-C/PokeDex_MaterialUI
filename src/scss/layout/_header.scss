@@ -10,18 +10,18 @@
 	border-bottom-right-radius: 33px;
 }
 .box__circle--ext {
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 	background: $colorRedPk;
 	margin-top: 7px;
 	margin-left: 15px;
 	border-radius: 50%;
 	border-style: solid;
-	border-width: medium;;
+	border-width: medium;
 }
 .box__circle--int {
-	width: 44px;
-	height: 44px;
+	width: 53px;
+	height: 53px;
 	background: $colorBlue;
 	margin: 2px;
 	border-radius: 50%;
@@ -34,7 +34,7 @@
 	justify-content: flex-end;
 	align-items: center;
 	font-family: $text;
-	font-size: 18px;
+	font-size: 20px;
 	margin-top: 30px;
 	padding: 2px;
 	border-top-style: double;
@@ -43,7 +43,7 @@
 	border-top-left-radius: 24px;
 }
 .img__pokeball{
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	padding-right: 10px;
 }

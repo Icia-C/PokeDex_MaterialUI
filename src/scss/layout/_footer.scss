@@ -1,0 +1,45 @@
+.box__footer {
+	position: fixed;
+	background: $greyBox;
+	border-style: double;
+	border-radius: 25px;
+	margin: 12px;
+}
+.box__footer--input {
+	font-family: $text;
+	font-size: 22px;
+	padding-left: 8px;
+	background-color: $inputBox;
+	border-radius: 25px;
+	width: 270px;
+	margin: 5px;
+	border-style: double;
+}
+.box__footer--components {
+	display: flex;
+	flex-direction: row;
+}
+.img__control {
+	width: 60px;
+	height: 60px;
+	margin: 10px;
+}
+.box__footer--descrition {
+	height: 70px;
+	width: 120px;
+	font-family: $text;
+	font-size: 22px;
+	background-color: $inputBox;
+	border-style: double;
+}
+.box__footer--creator {
+	font-family: $text;
+	font-size: 14px;
+	color: $greyArrow;
+	display: flex;
+	justify-content: center;
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
+}
