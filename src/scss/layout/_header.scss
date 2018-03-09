@@ -1,0 +1,49 @@
+//Header
+.box__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.box__line--inf {
+	width: 146px;
+	border-bottom-style: double;
+	border-bottom-right-radius: 33px;
+}
+.box__circle--ext {
+	width: 50px;
+	height: 50px;
+	background: $colorRedPk;
+	margin-top: 7px;
+	margin-left: 15px;
+	border-radius: 50%;
+	border-style: solid;
+	border-width: medium;;
+}
+.box__circle--int {
+	width: 44px;
+	height: 44px;
+	background: $colorBlue;
+	margin: 2px;
+	border-radius: 50%;
+	border-style: solid;
+	border-width: thin;
+}
+.box__tittle {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	font-family: $text;
+	font-size: 18px;
+	margin-top: 30px;
+	padding: 2px;
+	border-top-style: double;
+	border-color: $greyDirection;
+	width: 172px;
+	border-top-left-radius: 24px;
+}
+.img__pokeball{
+	width: 40px;
+	height: 40px;
+	padding-right: 10px;
+}
