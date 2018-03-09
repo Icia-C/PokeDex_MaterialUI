@@ -16,27 +16,35 @@ class App extends Component {
 	componentDidMount(){
 
 		let pokemons = this.state.pkStore;
-		pokemons.push({
-			name: 'bulbasur',
-			id: 0,
-			types: [
-				{
-					slot: 2,
-					type: {
-						name: 'poison'
-					}
-				},
-				{
-					slot: 1,
-					type: {
-						name: 'grass'
-					}
-				}
-			],
-			sprites: {
-				front_default : 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'
-			}
-		});
+		pokemons.push({name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asdf',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asfad',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'dafasf',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'rewhgfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'kjhgkgkgh',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'trettwtgrwe',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdgdsgds',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfgdsgd',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbafsdssur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'fgsdfqwewr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasurtewtgtrr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}});
 		this.setState({
 			pkStore: pokemons
 		});
@@ -105,7 +113,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className="box__container">
-				<input className="box__input" onChange={this.handleText} placeholder="Filtra pokemons por nombre..."></input>
+			<div>
+				<input className="box__input" onChange={this.handleText} placeholder="Filtra pokemon por nombre..."></input></div>
 				{this.showPokemons()}
 			</div>
 		);

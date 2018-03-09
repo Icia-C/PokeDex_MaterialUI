@@ -28,8 +28,7 @@ class Screen extends React.Component{
 		return(
 			<div className="pk__box">
 				<img className="pk__img" src={ this.props.image } alt="pokemon"/>
-				<h2>#{ this.props.id }</h2>
-				<h3>{ this.props.name }</h3>
+				<p>#{ this.props.id } { this.props.name }</p>
 				{this.selectType()}
 			</div>
 		)
