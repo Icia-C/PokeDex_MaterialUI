@@ -26,6 +26,17 @@ body {
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
+	background: blue;
+	width: 100px;
+	height: 100px;
 	color: white;
 	font-size: 25px;
+}
+.pk__img {
+
+}
+.pk__card {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr) ;
+	justify-content: center;
 }
