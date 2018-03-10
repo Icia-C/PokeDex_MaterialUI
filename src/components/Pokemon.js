@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Screen extends React.Component{
+class Pokemon extends React.Component{
 	constructor(props){
 		super(props);
 
@@ -18,16 +18,18 @@ class Screen extends React.Component{
 		for (let i = 0; i < this.state.pkType.length; i++) {
 			type = type + ' ' + this.state.pkType[i].type.name
 		}
+
 		return (
-			<p> {type} </p>
+			<span> {type} </span>
 		)
 	}
+
 
 	render(){
 
 		return(
 			<div className="pk__box">
-				<img className="pk__img" src={ this.props.image } alt="pokemon"/>
+				<img className={`pk__img pk__img--${this.state.pkType[this.state.pkType.length - 1].type.name}`} src={ this.props.image } alt="pokemon"/>
 				<p>#{ this.props.id } { this.props.name }</p>
 				{this.selectType()}
 			</div>
@@ -35,4 +37,4 @@ class Screen extends React.Component{
 	}
 }
 
-export default Screen;
+export default Pokemon;
