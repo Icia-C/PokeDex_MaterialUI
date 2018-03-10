@@ -5,10 +5,8 @@ class Header extends React.Component{
 	render(){
 		return (
 			<div className="box__header">
-				<div className="box__line--inf">
-					<div className="box__circle--ext">
-						<p className="box__circle--int"></p>
-					</div>
+				<div className="box__circle--ext">
+					<p className="box__circle--int"></p>
 				</div>
 				<div className="box__tittle">
 					<p>POKÉDEX OF ANOMALIES</p>

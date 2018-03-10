@@ -27,6 +27,7 @@ body {
 .pk__box {
 	background: $whiteBox;
 	color: $greyArrow;
+	font-family: $Roboto;
 	font-size: 20px;
 	display: flex;
 	flex-direction: column;
@@ -49,6 +50,7 @@ body {
 	border: solid;
 }
 .pk__type {
+	font-size: 14px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
