@@ -1,0 +1,43 @@
+//Header
+.box__header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.box__line--inf {
+	width: 146px;
+}
+.box__circle--ext {
+	width: 60px;
+	height: 60px;
+	background: $colorRedPk;
+	margin-top: 7px;
+	margin-left: 15px;
+	border-radius: 50%;
+	border-style: solid;
+	border-width: medium;
+}
+.box__circle--int {
+	width: 53px;
+	height: 53px;
+	background: $colorBlue;
+	margin: 2px;
+	border-radius: 50%;
+	border-style: solid;
+	border-width: thin;
+}
+.box__tittle {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 20px;
+	margin-top: 30px;
+	padding: 2px;
+	width: 172px;
+}
+.img__pokeball{
+	width: 45px;
+	height: 45px;
+	padding-right: 10px;
+}

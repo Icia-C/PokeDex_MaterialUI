@@ -1,10 +1,67 @@
+.pk__card {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); }
+  @media all and (min-width: 650px) {
+    .pk__card {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media all and (min-width: 800px) {
+    .pk__card {
+      grid-template-columns: repeat(3, 1fr); } }
+  @media all and (min-width: 1100px) {
+    .pk__card {
+      grid-template-columns: repeat(4, 1fr); } }
+  @media all and (min-width: 1300px) {
+    .pk__card {
+      grid-template-columns: repeat(5, 1fr); } }
+
+.box__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+
+.box__line--inf {
+  width: 146px; }
+
+.box__circle--ext {
+  width: 60px;
+  height: 60px;
+  background: #ff3334;
+  margin-top: 7px;
+  margin-left: 15px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: medium; }
+
+.box__circle--int {
+  width: 53px;
+  height: 53px;
+  background: #01ffff;
+  margin: 2px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: thin; }
+
+.box__tittle {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 30px;
+  padding: 2px;
+  width: 172px; }
+
+.img__pokeball {
+  width: 45px;
+  height: 45px;
+  padding-right: 10px; }
+
 * {
   margin: 0;
   padding: 0; }
 
 body {
-  background: #e3e3e3;
-  background-size: cover; }
+  background: #ff3334; }
 
 .box__container {
   display: flex;
@@ -31,15 +88,11 @@ body {
   font-size: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 10px;
   border-radius: 20px;
   padding: 15px; }
-  .pk__box p {
-    margin: 7px; }
-  .pk__box span {
-    font-size: 14px;
-    margin-bottom: 7px; }
+  .pk__box h3 {
+    text-align: center; }
   @media all and (min-width: 650px) {
     .pk__box {
       margin-right: 25px; } }
@@ -52,42 +105,39 @@ body {
   background: linear-gradient(-180deg, red 50%, white 50%);
   border: solid; }
 
-.pk__img--poison {
+.pk__type {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.pk__type--box {
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 7px; }
+
+.pk__type--poison {
   background: #A040A0; }
 
-.pk__img--grass {
+.pk__type--grass {
   background: #78C850; }
 
-.pk__img--fire {
+.pk__type--fire {
   background: #F08030; }
 
-.pk__img--water {
+.pk__type--water {
   background: #6890F0; }
 
-.pk__img--flying {
+.pk__type--flying {
   background: #A890F0; }
 
-.pk__img--bug {
+.pk__type--bug {
   background: #A8B820; }
 
-.pk__img--normal {
+.pk__type--normal {
   background: #A890F0; }
 
-.pk__img--electric {
+.pk__type--electric {
   background: #F8D030; }
-
-.pk__card {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); }
-  @media all and (min-width: 650px) {
-    .pk__card {
-      grid-template-columns: repeat(2, 1fr); } }
-  @media all and (min-width: 800px) {
-    .pk__card {
-      grid-template-columns: repeat(3, 1fr); } }
-  @media all and (min-width: 1100px) {
-    .pk__card {
-      grid-template-columns: repeat(4, 1fr); } }
-  @media all and (min-width: 1300px) {
-    .pk__card {
-      grid-template-columns: repeat(5, 1fr); } }
