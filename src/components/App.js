@@ -15,58 +15,58 @@ class App extends Component {
 
 	componentDidMount(){
 
-// 		let pokemons = this.state.pkStore;
-// 		pokemons.push({name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asdf',id: 0,types: [{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asfad',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'dafasf',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'rewhgfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'kjhgkgkgh',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'trettwtgrwe',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdgdsgds',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfgdsgd',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbafsdssur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'fgsdfqwewr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasurtewtgtrr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
-// slot: 1,type: {name: 'grass'}}],
-// sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}});
-// 		this.setState({
-// 			pkStore: pokemons
-// 		});
+		let pokemons = this.state.pkStore;
+		pokemons.push({name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asdf',id: 0,types: [{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'asfad',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'dafasf',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'rewhgfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'kjhgkgkgh',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'trettwtgrwe',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdgdsgds',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfgdsgd',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'sfdg',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbafsdssur',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'fgsdfqwewr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}}, {name: 'bulbasurtewtgtrr',id: 0,types: [{slot: 2,type: {name: 'poison'}},{
+slot: 1,type: {name: 'grass'}}],
+sprites: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png'}});
+		this.setState({
+			pkStore: pokemons
+		});
 
 
-		const URL = 'https://pokeapi.co/api/v2/pokemon/';
-
-		for (let i=1; i < 5; i++){
-			let URL2 = URL + i ;
-
-			fetch(URL2)// (2) llamada a la api limitada a 2 pokemons
-				.then(response=> response.json()) // (3) transformamos a json
-				.then(json => {
-					let pokemon = this.state.pkStore;
-					pokemon.concat(this.state.pkStore.id)
-					pokemon.push(json);// (4) insertamos el objeto criaturas en el array
-					//pokemon[json.id] = json
-					this.setState({
-						pkStore: pokemon
-					});
-				})
-		}
+		// const URL = 'https://pokeapi.co/api/v2/pokemon/';
+		//
+		// for (let i=1; i < 5; i++){
+		// 	let URL2 = URL + i ;
+		//
+		// 	fetch(URL2)// (2) llamada a la api limitada a 2 pokemons
+		// 		.then(response=> response.json()) // (3) transformamos a json
+		// 		.then(json => {
+		// 			let pokemon = this.state.pkStore;
+		// 			pokemon.concat(this.state.pkStore.id)
+		// 			pokemon.push(json);// (4) insertamos el objeto criaturas en el array
+		// 			//pokemon[json.id] = json
+		// 			this.setState({
+		// 				pkStore: pokemon
+		// 			});
+		// 		})
+		// }
 	}
 
 	//Recogemos el valor del input

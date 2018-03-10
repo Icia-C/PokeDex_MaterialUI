@@ -3,7 +3,7 @@
 	padding: 0;
 }
 body {
-	background: url('../img/background.jpg') center;
+	background: #e3e3e3;
 	background-size: cover;
 }
 .box__container {
@@ -34,6 +34,7 @@ body {
 	align-items: center;
 	margin: 10px;
 	border-radius: 20px;
+	padding: 15px;
 	p {
 		margin: 7px;
 	}
@@ -45,11 +46,14 @@ body {
 		margin-right: 25px;
 	}
 }
+
 .pk__img {
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
 	width: 100%;
-	//background: $greyBox;
+	border-radius: 50%;
+	background: linear-gradient(-180deg, red 50%, white 50%);
+	border: solid;
 }
 .pk__img--poison {
 	background: $poison;
