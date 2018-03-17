@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=VT323");
 @import url("https://fonts.googleapis.com/css?family=Roboto");
+.pk__box--close {
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  border: solid;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-color: #ff3334; }
+
 .pk__card {
   display: grid;
   grid-template-columns: repeat(1, 1fr); }
@@ -111,6 +123,31 @@ body {
   @media all and (min-width: 650px) {
     .pk__box {
       margin-right: 25px; } }
+
+.pk__box--background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.pk__box--open {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 200px auto;
+  background: #ffffff;
+  border-radius: 25px;
+  transition: transform 1s; }
+
+.pk__img--card {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  width: 50%;
+  border-radius: 50%;
+  background: linear-gradient(-180deg, red 50%, white 50%);
+  border: solid; }
 
 .pk__img {
   border-top-right-radius: 20px;
