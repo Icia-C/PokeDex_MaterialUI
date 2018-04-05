@@ -13,22 +13,45 @@ class App extends Component {
 
 		this.state = {
 			pkStore: [], //Mi array de criaturas
-			pkName: '', //Recojo el valor del filtro
 			pkArrSpecies: [],
-			loading: false,
+			pkName: '', //Recojo el valor del filtro
+			loading: true,
 		}
 	}
 
+	componentWillUpdate(nextProps, nextState){
+		if (this.state.pkStore.length > 0) {//me aseguro de no sobreescribir el estado
+			let pokemonDataLocal = {
+				pkStore: this.state.pkStore,
+				pkArrSpecies: this.state.pkArrSpecies
+			};
+			localStorage.setItem('pokemonData', JSON.stringify(pokemonDataLocal));
+		}
+	}
 
 	componentDidMount(){
-		this.setState({
-			loading: true
-		})
-		this.getPokemons();
+		let pokemonDataLocal = localStorage.getItem('pokemonData');
+
+		if (pokemonDataLocal === null){ //no hay pokemon en localStorage, llamamos a la api
+			this.getPokemons()
+		}
+		else {
+			pokemonDataLocal = JSON.parse(pokemonDataLocal)
+			if (pokemonDataLocal.pkStore.length > 0){
+				this.setState({
+					pkStore: pokemonDataLocal.pkStore, //Mi array de criaturas
+					pkArrSpecies: pokemonDataLocal.pkArrSpecies,
+					loading: false
+				});
+			}
+			else {
+				this.getPokemons();
+			}
+		}
 	}
 
 	getPokemons(){
-		for (let i=1; i <= 2; i++){
+		for (let i=1; i <= 25; i++){
 			this.getPokemon(i);
 		}
 	}
@@ -51,7 +74,7 @@ class App extends Component {
 				})
 				this.setState({
 					pkStore: pokemon,
-					loading: false
+					loading: true
 				});
 				this.getSpecies(json);
 			})
@@ -61,21 +84,22 @@ class App extends Component {
 		const URL = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon.id;
 
 		//Llamada para coger la información de la especie
-			fetch(URL)
-				.then(response => response.json()) //transformamos a json
-				.then(json => {
-					let species = this.state.pkArrSpecies;
-					species.push(json);//Insertamos el objeto criaturas en el array
-					this.setState({
-						pkArrSpecies: species,
-					})
-					//Comprobamos si tiene preevolución
-					if (json.evolves_from_species != null){
-						pokemon.hasParent = true;
-						pokemon.parentName = json.evolves_from_species.name;
-					}
-					//this.callEvolutionChain(json.evolution_chain);
+		fetch(URL)
+			.then(response => response.json()) //transformamos a json
+			.then(json => {
+				let species = this.state.pkArrSpecies;
+				species.push(json);//Insertamos el objeto criaturas en el array
+				this.setState({
+					pkArrSpecies: species,
+					loading: false
 				});
+				//Comprobamos si tiene preevolución
+				if (json.evolves_from_species != null){
+					pokemon.hasParent = true;
+					pokemon.parentName = json.evolves_from_species.name;
+				}
+				//this.callEvolutionChain(json.evolution_chain);
+			});
 	}
 
 	//Recogemos el valor del input
@@ -106,7 +130,6 @@ class App extends Component {
 				</div>
 			);
 		}
-
 	}
 
 	render() {
