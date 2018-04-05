@@ -31,14 +31,15 @@ body {
 	font-size: 20px;
 	display: flex;
 	flex-direction: column;
-	margin: 10px;
+	margin: 12px;
 	border-radius: 20px;
-	padding: 15px;
+	// padding: 10px;
 	h3 {
 		text-align: center;
 	}
-	@media all and(min-width: 650px){
-		margin-right: 25px;
+	p {
+		font-size: 10px;
+		text-align: center;
 	}
 }
 .pk__box--background {
@@ -48,35 +49,48 @@ body {
 	width: 100%;
 	height: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
+	h2 {
+		text-transform: capitalize;
+	}
 }
 .pk__box--open {
 	position: relative;
 	width: 300px;
-	height: 400px;
 	margin: 200px auto;
 	background: $whiteBox;
 	border-radius: 25px;
 	transition: transform 1s;
-	padding-top: 20px;
-	padding-left: 15px;
-}
-
-.pk__img--card {
-	margin: auto;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	width: 60%;
 }
 .pk__img {
+	padding: 7px;
 	border-top-right-radius: 20px;
 	border-top-left-radius: 20px;
 	width: 100%;
 	border-radius: 50%;
 	background: linear-gradient(-180deg, red 50%, white 50%);
 	border: solid;
+	-ms-interpolation-mode: nearest-neighbor; // IE 7+ (non-standard property)
+	image-rendering: -webkit-optimize-contrast; // Safari 6, UC Browser 9.9
+	image-rendering: -webkit-crisp-edges; // Safari 7+
+	image-rendering: -moz-crisp-edges; // Firefox 3.6+
+	image-rendering: -o-crisp-edges; // Opera 12
+	image-rendering: pixelated; // Chrome 41+ and Opera 26+
+}
+.pk__img--card {
+	width: 80%;
+	-ms-interpolation-mode: nearest-neighbor; // IE 7+ (non-standard property)
+	image-rendering: -webkit-optimize-contrast; // Safari 6, UC Browser 9.9
+	image-rendering: -webkit-crisp-edges; // Safari 7+
+	image-rendering: -moz-crisp-edges; // Firefox 3.6+
+	image-rendering: -o-crisp-edges; // Opera 12
+	image-rendering: pixelated; // Chrome 41+ and Opera 26+
 }
 .pk__type {
 	font-size: 14px;
+	margin: 7px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -89,40 +103,76 @@ body {
 	color: $whiteBox;
 	border-radius: 7px;
 }
-.pk__type--poison {
-	background: $poison;
-}
-.pk__type--grass {
-	background: $grass;
-}
-.pk__type--fire {
-	background: $fire;
-}
-.pk__type--water {
-	background: $water;
-}
-.pk__type--flying {
-	background: $flying;
-}
-.pk__type--bug {
-	background: $bug;
-}
-.pk__type--normal {
-	background: $normal;
-}
-.pk__type--electric {
-	background: $electric;
-}
+//CSS Pokemon Tipes
+.pk__type--poison {background: $poison;}
+.pk__type--grass {background: $grass;}
+.pk__type--fire {background: $fire;}
+.pk__type--water {background: $water;}
+.pk__type--flying {background: $flying;}
+.pk__type--bug {background: $bug;}
+.pk__type--normal {background: $normal;}
+.pk__type--electric {background: $electric;}
 
 .pk__type--profile {
 	font-size: 15px;
-	margin-left: 15px;
 	line-height: 25px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 20px;
+	p{
+		font-size: 13px;
+	}
 }
 .pk__abi {
 	margin-right: 10px;
 }
 .link {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
 	text-decoration: none;
 	color: black;
+	text-transform: capitalize;
+	.span__id {
+		margin-right: 90%;
+	}
+	p {
+		font-size: 11px;
+		text-decoration: underline;
+	}
+}
+.loader {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -60px 0 0 -60px;
+	background: #fff;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	border: 10px solid #19bee1;
+	&:after {
+		content: '';
+		background: trasparent;
+		width: 140%;
+		height: 140%;
+		position: absolute;
+		border-radius: 100%;
+		top: -20%;
+		left: -20%;
+		opacity: 0.7;
+		box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
+		animation: rotate 2s infinite linear;
+	}
+	@keyframes rotate {
+		0% {
+			transform: rotateZ(0deg);
+		}
+		100% {
+			transform: rotateZ(360deg);
+		}
+	}
 }

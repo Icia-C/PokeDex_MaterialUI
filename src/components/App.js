@@ -14,17 +14,21 @@ class App extends Component {
 		this.state = {
 			pkStore: [], //Mi array de criaturas
 			pkName: '', //Recojo el valor del filtro
-			pkArrSpecies: []
+			pkArrSpecies: [],
+			loading: false,
 		}
 	}
 
-	componentDidMount(){
 
+	componentDidMount(){
+		this.setState({
+			loading: true
+		})
 		this.getPokemons();
 	}
 
 	getPokemons(){
-		for (let i=1; i <= 25; i++){
+		for (let i=1; i <= 2; i++){
 			this.getPokemon(i);
 		}
 	}
@@ -46,7 +50,8 @@ class App extends Component {
 						return 0;
 				})
 				this.setState({
-					pkStore: pokemon
+					pkStore: pokemon,
+					loading: false
 				});
 				this.getSpecies(json);
 			})
@@ -62,7 +67,7 @@ class App extends Component {
 					let species = this.state.pkArrSpecies;
 					species.push(json);//Insertamos el objeto criaturas en el array
 					this.setState({
-						pkArrSpecies: species
+						pkArrSpecies: species,
 					})
 					//Comprobamos si tiene preevolución
 					if (json.evolves_from_species != null){
@@ -86,14 +91,22 @@ class App extends Component {
 		//Realizamos el filtrado
 		pokeMonster = this.state.pkStore.filter(pokemon =>     pokemon.name.toLowerCase().includes(this.state.pkName));
 
-		return (
-			<div className="pk__card">{
-				pokeMonster.map( //recorro el array
-					(pokemon, i) =>
-						<Pokemon key={i} poke={pokemon}/>//recorro los tipos
-				)}
-			</div>
-		);
+		if(this.state.loading === true){
+			return(
+				<div className="loader"></div>
+			);
+		}
+		else{
+			return (
+				<div className="pk__card">{
+					pokeMonster.map( //recorro el array
+						(pokemon, i) =>
+							<Pokemon key={i} poke={pokemon}/>//recorro los tipos
+					)}
+				</div>
+			);
+		}
+
 	}
 
 	render() {
