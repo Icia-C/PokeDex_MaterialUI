@@ -15,8 +15,8 @@ class App extends Component {
 		this.updateDimensions = this.updateDimensions.bind(this);
 
 		this.state = {
-			pkStore: [],
-			pkArrSpecies: [],
+			pkStore: [],  // Pokemon data array
+			pkArrSpecies: [], // Pokemon-species data array
 			pkName: '',
 			loading: true,
 			gridCols: 6
@@ -24,7 +24,8 @@ class App extends Component {
 	}
 
 	componentWillUpdate(nextProps, nextState){
-		if (this.state.pkStore.length > 0) { //me aseguro de no sobreescribir el estado
+		if (this.state.pkStore.length > 0) {
+			// to be sure not to overriwrite the state if it is already set
 			let pokemonDataLocal = {
 				pkStore: this.state.pkStore,
 				pkArrSpecies: this.state.pkArrSpecies
@@ -34,9 +35,13 @@ class App extends Component {
 	}
 
 	componentDidMount(){
+		// call updateDimensions when the screen witdh changes
+		window.addEventListener("resize", this.updateDimensions);
+
 		let pokemonDataLocal = localStorage.getItem('pokemonData');
 
-		if (pokemonDataLocal === null){ //no pokemon in localStorage, call API
+		if (pokemonDataLocal === null){
+			// there are no pokemon in localStorage, call API
 			this.getPokemons()
 		}
 		else {
@@ -57,14 +62,20 @@ class App extends Component {
 	updateDimensions(){
 		let nCols = 6;
 
-		if (window.innerWidth <= 910){
+		if (window.innerWidth <= 470){
+			nCols = 1;
+		} else if (window.innerWidth <= 700) {
+			nCols = 2;
+		} else if (window.innerWidth <= 1000){
 			nCols = 3;
+		} else if (window.innerWidth <= 1100){
+			nCols = 4;
+		} else if (window.innerWidth <= 1400){
+			nCols = 5;
 		}
-		this.setState({
-			gridCols: nCols
-		})
-	}
 
+		this.setState({gridCols: nCols})
+	}
 
 	getPokemons(){
 		for (let i=1; i <= 25; i++){
@@ -109,12 +120,11 @@ class App extends Component {
 					pkArrSpecies: species,
 					loading: false
 				});
-				//If has evolves
+				//If has evolution
 				if (json.evolves_from_species != null){
 					pokemon.hasParent = true;
 					pokemon.parentName = json.evolves_from_species.name;
 				}
-				//this.callEvolutionChain(json.evolution_chain);
 			});
 	}
 
@@ -138,10 +148,9 @@ class App extends Component {
 		}
 		else{
 			return (
-				<GridList cols={this.updateDimensions}  cellHeight={270} className="pk__card">{
-					pokeMonster.map( //recorro el array
-						(pokemon, i) =>
-							<Pokemon key={i} poke={pokemon}/>//recorro los tipos
+				<GridList cols={this.state.gridCols}  cellHeight={270} className="pk__card">
+					{pokeMonster.map((pokemon, i) =>
+							<Pokemon key={i} poke={pokemon}/>
 					)}
 				</GridList>
 			);
@@ -151,9 +160,11 @@ class App extends Component {
 	render() {
 		return (
 			<MuiThemeProvider>
-				<Header />
-				<PokeFilter pokefilter= {this.handleText} />
-				{this.showPokemons()}
+				<div className='box__container'>
+					<Header />
+					<PokeFilter pokefilter= {this.handleText} />
+					{this.showPokemons()}
+				</div>
 			</MuiThemeProvider>
 		);
 	}
