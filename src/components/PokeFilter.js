@@ -1,11 +1,15 @@
 import React from 'react';
+import TextField from 'material-ui/TextField';
 
 class PokeFilter extends React.Component {
+
 	render(){
 		return(
-			<div>
-				<input className="box__input" onChange={this.props.pokefilter} placeholder="Filtra pokemon por nombre..."></input>
-			</div>
+			<TextField
+				hintText="Pokemon"
+				floatingLabelText="Find your favourite Pokemon"
+				onChange={this.props.pokefilter}
+			/>
 		)
 	}
 }

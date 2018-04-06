@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import GridList from 'material-ui/GridList';
 import Pokemon from './Pokemon';
 import Header from './Header';
 import PokeFilter from './PokeFilter';
@@ -10,17 +12,19 @@ class App extends Component {
 		this.handleText = this.handleText.bind(this);
 		this.getPokemon = this.getPokemon.bind(this);
 		this.getPokemons = this.getPokemons.bind(this);
+		this.updateDimensions = this.updateDimensions.bind(this);
 
 		this.state = {
-			pkStore: [], //Mi array de criaturas
+			pkStore: [],
 			pkArrSpecies: [],
-			pkName: '', //Recojo el valor del filtro
+			pkName: '',
 			loading: true,
+			gridCols: 6
 		}
 	}
 
 	componentWillUpdate(nextProps, nextState){
-		if (this.state.pkStore.length > 0) {//me aseguro de no sobreescribir el estado
+		if (this.state.pkStore.length > 0) { //me aseguro de no sobreescribir el estado
 			let pokemonDataLocal = {
 				pkStore: this.state.pkStore,
 				pkArrSpecies: this.state.pkArrSpecies
@@ -32,14 +36,14 @@ class App extends Component {
 	componentDidMount(){
 		let pokemonDataLocal = localStorage.getItem('pokemonData');
 
-		if (pokemonDataLocal === null){ //no hay pokemon en localStorage, llamamos a la api
+		if (pokemonDataLocal === null){ //no pokemon in localStorage, call API
 			this.getPokemons()
 		}
 		else {
 			pokemonDataLocal = JSON.parse(pokemonDataLocal)
 			if (pokemonDataLocal.pkStore.length > 0){
 				this.setState({
-					pkStore: pokemonDataLocal.pkStore, //Mi array de criaturas
+					pkStore: pokemonDataLocal.pkStore,
 					pkArrSpecies: pokemonDataLocal.pkArrSpecies,
 					loading: false
 				});
@@ -50,6 +54,18 @@ class App extends Component {
 		}
 	}
 
+	updateDimensions(){
+		let nCols = 6;
+
+		if (window.innerWidth <= 910){
+			nCols = 3;
+		}
+		this.setState({
+			gridCols: nCols
+		})
+	}
+
+
 	getPokemons(){
 		for (let i=1; i <= 25; i++){
 			this.getPokemon(i);
@@ -59,11 +75,11 @@ class App extends Component {
 	getPokemon(pkId){
 		let URL2 = 'https://pokeapi.co/api/v2/pokemon/' + pkId ;
 
-		fetch(URL2) //llamada a la api limitada a 2 pokemons
-			.then(response => response.json()) //transformamos a json
+		fetch(URL2)
+			.then(response => response.json())
 			.then(json => {
 				let pokemon = this.state.pkStore;
-				pokemon.push(json);//Insertamos el objeto criaturas en el array
+				pokemon.push(json); //Insert pokemon in array
 				pokemon.sort((poka, pokb) => {
 					if (poka.id < pokb.id)
 						return -1;
@@ -83,17 +99,17 @@ class App extends Component {
 	getSpecies(pokemon){
 		const URL = 'https://pokeapi.co/api/v2/pokemon-species/' + pokemon.id;
 
-		//Llamada para coger la información de la especie
+		//Specie information
 		fetch(URL)
-			.then(response => response.json()) //transformamos a json
+			.then(response => response.json())
 			.then(json => {
 				let species = this.state.pkArrSpecies;
-				species.push(json);//Insertamos el objeto criaturas en el array
+				species.push(json);
 				this.setState({
 					pkArrSpecies: species,
 					loading: false
 				});
-				//Comprobamos si tiene preevolución
+				//If has evolves
 				if (json.evolves_from_species != null){
 					pokemon.hasParent = true;
 					pokemon.parentName = json.evolves_from_species.name;
@@ -102,7 +118,7 @@ class App extends Component {
 			});
 	}
 
-	//Recogemos el valor del input
+	//Input value
 	handleText(event) {
 		this.setState({
 			pkName: event.target.value.toLowerCase()
@@ -112,7 +128,7 @@ class App extends Component {
 	showPokemons(){
 		let pokeMonster = this.state.pkStore;
 
-		//Realizamos el filtrado
+		//Filter
 		pokeMonster = this.state.pkStore.filter(pokemon =>     pokemon.name.toLowerCase().includes(this.state.pkName));
 
 		if(this.state.loading === true){
@@ -122,23 +138,23 @@ class App extends Component {
 		}
 		else{
 			return (
-				<div className="pk__card">{
+				<GridList cols={this.updateDimensions}  cellHeight={270} className="pk__card">{
 					pokeMonster.map( //recorro el array
 						(pokemon, i) =>
 							<Pokemon key={i} poke={pokemon}/>//recorro los tipos
 					)}
-				</div>
+				</GridList>
 			);
 		}
 	}
 
 	render() {
 		return (
-			<div className="box__container">
+			<MuiThemeProvider>
 				<Header />
 				<PokeFilter pokefilter= {this.handleText} />
 				{this.showPokemons()}
-			</div>
+			</MuiThemeProvider>
 		);
 	}
 }

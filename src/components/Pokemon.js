@@ -1,6 +1,17 @@
 import React from 'react';
 import PokeCard from './PokeCard';
 import {Link, Route, Switch} from 'react-router-dom';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const style = {
+  height: 250,
+  width: 200,
+  margin: 20,
+  textAlign: 'center',
+  display: 'inline-block',
+};
+
 
 class Pokemon extends React.Component{
 	constructor(props){
@@ -14,7 +25,8 @@ class Pokemon extends React.Component{
 			hasParent: false,
 			evolutionChain: {},
 			preEvo: null,
-			postEvo: null
+			postEvo: null,
+			open: false,
 		}
 	}
 
@@ -96,33 +108,56 @@ class Pokemon extends React.Component{
 		});
 	}
 
+	handleOpen = () => {
+		this.setState({open: true});
+	};
+	
 	render(){
 		let poke = this.props.poke;
 
 		return(
-			<div className="pk__box">
-
-				<Link className="link" to={`/pokemon/${this.props.poke.id}`}>
-					<span className="span__id">#{this.props.poke.id}</span>
+				<Paper style={style} zDepth={2}>
 					<img className="pk__img" src={this.props.poke.sprites.front_default} alt="pokemon"/>
-					<h3>{this.props.poke.name}</h3>
+					<h3>#{this.props.poke.id} {this.props.poke.name}</h3>
 					<div className="pk__type">
 						{this.props.poke.types.map((type, i) =>
 							<span key={i} className={`pk__type--box pk__type--${type.type.name}`}> {type.type.name} </span>)}
 					</div>
-					<p> {this.props.poke.hasParent ? `Evolves from: ${this.props.poke.parentName}` : '' }</p>
-				</Link>
-
-				<Switch>
-					<Route exact path={`/pokemon/${this.props.poke.id}`} render = {() =>
-						<PokeCard poke={poke}
-						 					preEvo={this.state.preEvo}
-											postEvo={this.state.postEvo} /> } />
-				</Switch>
-
-			</div>
-		)
+					<Link className="link" to={`/pokemon/${this.props.poke.id}`}>
+						<RaisedButton label="More info" onClick={this.handleOpen} />
+					</Link>
+					<Switch>
+						<Route exact path={`/pokemon/${this.props.poke.id}`} render = {() =>
+							<PokeCard poke={poke}
+												open={this.state.open}
+												preEvo={this.state.preEvo}
+												postEvo={this.state.postEvo} /> }
+						/>
+					</Switch>
+				</Paper>
+		);
 	}
 }
 
 export default Pokemon;
+// <div className="pk__box">
+//
+// 	<Link className="link" to={`/pokemon/${this.props.poke.id}`}>
+// 		<span className="span__id">#{this.props.poke.id}</span>
+// 		<img className="pk__img" src={this.props.poke.sprites.front_default} alt="pokemon"/>
+// 		<h3>{this.props.poke.name}</h3>
+// 		<div className="pk__type">
+// 			{this.props.poke.types.map((type, i) =>
+// 				<span key={i} className={`pk__type--box pk__type--${type.type.name}`}> {type.type.name} </span>)}
+// 		</div>
+// 		<p> {this.props.poke.hasParent ? `Evolves from: ${this.props.poke.parentName}` : '' }</p>
+// 	</Link>
+//
+// 	<Switch>
+// 		<Route exact path={`/pokemon/${this.props.poke.id}`} render = {() =>
+// 			<PokeCard poke={poke}
+// 								preEvo={this.state.preEvo}
+// 								postEvo={this.state.postEvo} /> } />
+// 	</Switch>
+//
+// </div>
