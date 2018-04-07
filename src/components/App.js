@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import GridList from 'material-ui/GridList';
+import CircularProgress from 'material-ui/CircularProgress';
+import Paper from 'material-ui/Paper';
 import Pokemon from './Pokemon';
 import Header from './Header';
 import PokeFilter from './PokeFilter';
+
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+		margin: 0,
+  },
+  gridList: {
+    // width: 500,
+    // height: 450,
+  },
+};
 
 class App extends Component {
 	constructor(props){
@@ -143,16 +159,28 @@ class App extends Component {
 
 		if(this.state.loading === true){
 			return(
-				<div className="loader"></div>
+				<CircularProgress size={80} thickness={5} />
 			);
 		}
 		else{
 			return (
-				<GridList cols={this.state.gridCols}  cellHeight={270} className="pk__card">
+				<GridList style={styles.gridList} cellHeight={270}>
 					{pokeMonster.map((pokemon, i) =>
+						<Paper className="box__paper" key={i} zDepth={2}>
 							<Pokemon key={i} poke={pokemon}/>
+						</Paper>
 					)}
 				</GridList>
+						// 			{pokeMonster.map((pokemon,i) => (
+						// 	 <GridTile
+						// 		 key={i}
+						// 		 title={pokemon.name}
+						// 		 subtitle={<span>by <b>{pokemon.name}</b></span>}
+						// 	 >
+						// 		 <img className="pk__img" src={pokemon.sprites.front_default} />
+						// 	 </GridTile>
+						//  ))}
+						// </GridList>
 			);
 		}
 	}

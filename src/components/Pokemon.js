@@ -1,7 +1,7 @@
 import React from 'react';
 import PokeCard from './PokeCard';
 import {Link, Route, Switch} from 'react-router-dom';
-import Paper from 'material-ui/Paper';
+// import Paper from 'material-ui/Paper';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class Pokemon extends React.Component{
@@ -19,14 +19,14 @@ class Pokemon extends React.Component{
 
 	callSpecies(){
 		const URL = 'https://pokeapi.co/api/v2/pokemon-species/' + this.props.poke.id;
-		//Llamada para coger la información de la especie
+		//Call for specie information
 			fetch(URL)
 				.then(response => response.json())
 				.then(json => {
 					this.setState({
 						specie: json
 					})
-					//Comprobamos si tiene preevolución
+					//If has preevolution
 					if (json.evolves_from_species != null){
 						this.setState ({
 							hasParent: true,
@@ -45,7 +45,7 @@ class Pokemon extends React.Component{
 		let poke = this.props.poke;
 
 		return(
-			<Paper className="box__paper" zDepth={2}>
+			<div>
 				<img className="pk__img" src={this.props.poke.sprites.front_default} alt="pokemon"/>
 				<h3 className="pk__title">#{this.props.poke.id} {this.props.poke.name}</h3>
 				<div className="pk__type">
@@ -62,7 +62,7 @@ class Pokemon extends React.Component{
 						/> }
 					/>
 				</Switch>
-			</Paper>
+			</div>
 		);
 	}
 }
