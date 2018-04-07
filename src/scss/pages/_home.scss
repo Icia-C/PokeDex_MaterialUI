@@ -14,7 +14,7 @@ body {
 	text-transform: capitalize;
 }
 .pk__img--card {
-	width: 35%;
+	width: 100%;
 	-ms-interpolation-mode: nearest-neighbor; // IE 7+ (non-standard property)
 	image-rendering: -webkit-optimize-contrast; // Safari 6, UC Browser 9.9
 	image-rendering: -webkit-crisp-edges; // Safari 7+
@@ -29,11 +29,16 @@ body {
 	justify-content: center;
 }
 .pk__type--box {
+	width: 33%;
 	margin: 5px;
+	margin-bottom: 20px;
 	padding: 5px;
 	text-align: center;
 	color: $whiteBox;
-	border-radius: 7px;
+	transition: opacity 0.3s;
+	&:hover {
+		opacity: 0.5;
+	}
 }
 
 .box__paper {
@@ -42,10 +47,18 @@ body {
 	margin: 20px;
 	text-align: center;
 	display: inline-block;
+	transition: transform 1s ease-out, box-shadow 1s ease-out;
+	&:hover {
+		transform: rotateX(10deg);
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px !important;
+	}
 }
 
 //CSS Pokemon Tipes
-.pk__type--poison {background: $poison;}
+.pk__type--poison {
+	background: $poison;
+
+}
 .pk__type--grass {background: $grass;}
 .pk__type--fire {background: $fire;}
 .pk__type--water {background: $water;}
@@ -60,36 +73,18 @@ body {
 	flex-direction: column;
 	align-items: center;
 }
-
-.loader {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	margin: -60px 0 0 -60px;
-	background: #fff;
-	width: 100px;
-	height: 100px;
-	border-radius: 100%;
-	border: 10px solid #19bee1;
-	&:after {
-		content: '';
-		background: trasparent;
-		width: 140%;
-		height: 140%;
-		position: absolute;
-		border-radius: 100%;
-		top: -20%;
-		left: -20%;
-		opacity: 0.7;
-		box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
-		animation: rotate 2s infinite linear;
-	}
-	@keyframes rotate {
-		0% {
-			transform: rotateZ(0deg);
-		}
-		100% {
-			transform: rotateZ(360deg);
-		}
-	}
+.grid {
+	margin: 0 !important;
+	justify-content: center;
+}
+.grid > div {
+	width: auto !important;
+	perspective: 850px;
+}
+.pk__modal--paper {
+	margin: 20px;
+	text-align: center;
+	height: 200px;
+	width: 200px;
+	background: linear-gradient(-180deg, red 50%, white 50%);
 }
