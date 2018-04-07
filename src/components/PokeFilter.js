@@ -1,9 +1,7 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import FlatButton from 'material-ui/FlatButton';
+import {TextField, Toggle} from 'material-ui';
 
 class PokeFilter extends React.Component {
-
 	render(){
 		return(
 			<div>
@@ -12,7 +10,11 @@ class PokeFilter extends React.Component {
 					floatingLabelText="Find your favourite Pokemon"
 					onChange={this.props.pokefilter}
 				/>
-				<FlatButton label="My ♥ Pokemon" primary={true} />
+				<Toggle
+					label="Favourites"
+					labelPosition="right"
+					onClick={this.props.activeFav}
+				/>
 			</div>
 		)
 	}

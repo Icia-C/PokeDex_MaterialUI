@@ -1,8 +1,7 @@
 import React from 'react';
-import PokeCard from './PokeCard';
 import {Link, Route, Switch} from 'react-router-dom';
-import Paper from 'material-ui/Paper';
-import RaisedButton from 'material-ui/RaisedButton';
+import {Paper, RaisedButton} from 'material-ui';
+import PokeCard from './PokeCard';
 
 class Pokemon extends React.Component{
 	constructor(props){
@@ -45,7 +44,7 @@ class Pokemon extends React.Component{
 		let poke = this.props.poke;
 
 		return(
-			<Paper className="box__paper"  zDepth={2}>
+			<Paper className={`box__paper box__paper--fav-${this.props.fav}`} zDepth={2}>
 				<img className="pk__img" src={this.props.poke.sprites.front_default} alt="pokemon"/>
 				<h3 className="pk__title">#{this.props.poke.id} {this.props.poke.name}</h3>
 				<div className="pk__type">
@@ -59,6 +58,8 @@ class Pokemon extends React.Component{
 					<Route exact path={`/pokemon/${this.props.poke.id}`} render = {() =>
 						<PokeCard poke={poke}
 											open={true}
+											fav={this.props.fav}
+											handlePokemonFav={this.props.handlePokemonFav}
 						/> }
 					/>
 				</Switch>

@@ -1,13 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Dialog, FlatButton} from 'material-ui';
-import Paper from 'material-ui/Paper';
-import Checkbox from 'material-ui/Checkbox';
+import {Dialog, FlatButton, Paper, Checkbox} from 'material-ui';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 class PokeCard extends React.Component{
-
 	handleClose = () => {
 		this.setState({open: false});
 	};
@@ -24,16 +21,18 @@ class PokeCard extends React.Component{
 		];
 
 		return (
-			<Dialog title="Properties"
-							actions={actions}
-							modal={true}
-							open={this.props.open}
+			<Dialog
+				title="Properties"
+				actions={actions}
+				modal={true}
+				open={this.props.open}
 			>
 				<Checkbox
-					onClick={this.handleLike}
 					checkedIcon={<ActionFavorite />}
 					uncheckedIcon={<ActionFavoriteBorder />}
 					label="Like"
+					onClick={() => this.props.handlePokemonFav(this.props.poke.id)}
+					checked={this.props.fav}
 				/>
 				<div className="pk__modal">
 					<Paper className="pk__modal--paper" zDepth={3} circle={true}>
@@ -41,12 +40,10 @@ class PokeCard extends React.Component{
 					</Paper>
 					<h2 className="pk__title" >#{this.props.poke.id} {this.props.poke.name}</h2>
 				</div>
-
 				<div className="pk__type">
 					{this.props.poke.types.map((type, i) =>
 						<span key={i} className={`pk__type--box pk__type--${type.type.name}`}> {type.type.name} </span>)}
 				</div>
-
 				<div className="pk__type--profile">
 					<h2> Profile</h2>
 					<p><strong>Height:</strong> {this.props.poke.height} dm.</p>

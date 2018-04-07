@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import GridList from 'material-ui/GridList';
-import CircularProgress from 'material-ui/CircularProgress';
+import {GridList, CircularProgress} from 'material-ui';
 import Pokemon from './Pokemon';
 import Header from './Header';
 import PokeFilter from './PokeFilter';
@@ -13,12 +12,16 @@ class App extends Component {
 		this.handleText = this.handleText.bind(this);
 		this.getPokemon = this.getPokemon.bind(this);
 		this.getPokemons = this.getPokemons.bind(this);
+		this.handlePokemonFav = this.handlePokemonFav.bind(this);
+		this.activeFav = this.activeFav.bind(this);
 
 		this.state = {
 			pkStore: [],  // Pokemon data array
 			pkArrSpecies: [], // Pokemon-species data array
 			pkName: '',
 			loading: true,
+			pkFavourite: [],
+			onlyFavs: false
 		}
 	}
 
@@ -27,16 +30,14 @@ class App extends Component {
 			// to be sure not to overriwrite the state if it is already set
 			let pokemonDataLocal = {
 				pkStore: this.state.pkStore,
-				pkArrSpecies: this.state.pkArrSpecies
+				pkArrSpecies: this.state.pkArrSpecies,
+				pkFavourite: this.state.pkFavourite
 			};
 			localStorage.setItem('pokemonData', JSON.stringify(pokemonDataLocal));
 		}
 	}
 
 	componentDidMount(){
-		// call updateDimensions when the screen witdh changes
-		window.addEventListener("resize", this.updateDimensions);
-
 		let pokemonDataLocal = localStorage.getItem('pokemonData');
 
 		if (pokemonDataLocal === null){
@@ -49,6 +50,7 @@ class App extends Component {
 				this.setState({
 					pkStore: pokemonDataLocal.pkStore,
 					pkArrSpecies: pokemonDataLocal.pkArrSpecies,
+					pkFavourite: pokemonDataLocal.pkFavourite,
 					loading: false
 				});
 			}
@@ -109,6 +111,29 @@ class App extends Component {
 			});
 	}
 
+	handlePokemonFav(pokemonid) {
+
+	let favourites = this.state.pkFavourite;
+		if (this.state.pkFavourite.includes(pokemonid)){
+			//if this pokemon was fav, delete it from the fav pokemon array
+			//favourites = favourites.splice(favourites.indexOf(pokemonid), 1);
+			favourites = favourites.filter(id => id !== pokemonid)
+		}
+		else {
+			//add to the fav pokemon array
+			favourites.push(pokemonid)
+		}
+		this.setState({
+			pkFavourite: favourites
+		});
+	}
+
+	activeFav(){
+		this.setState({
+			onlyFavs: !this.state.onlyFavs
+		});
+	}
+
 	//Input value
 	handleText(event) {
 		this.setState({
@@ -122,6 +147,10 @@ class App extends Component {
 		//Filter
 		pokeMonster = this.state.pkStore.filter(pokemon =>     pokemon.name.toLowerCase().includes(this.state.pkName));
 
+		if (this.state.onlyFavs) {
+			pokeMonster = pokeMonster.filter(pokemon => this.state.pkFavourite.includes(pokemon.id));
+		}
+
 		if(this.state.loading === true){
 			return(
 				<CircularProgress size={80} thickness={5} />
@@ -129,13 +158,11 @@ class App extends Component {
 		}
 		else{
 			return (
-				<div className="root">
 				<GridList className="grid" cellHeight={'auto'} >
 					{pokeMonster.map((pokemon, i) =>
-						<Pokemon key={i} poke={pokemon}/>
+						<Pokemon key={i} poke={pokemon} fav={this.state.pkFavourite.includes(pokemon.id)} handlePokemonFav={this.handlePokemonFav}/>
 					)}
 				</GridList>
-				</div>
 			);
 		}
 	}
@@ -145,7 +172,7 @@ class App extends Component {
 			<MuiThemeProvider>
 				<div className='box__container'>
 					<Header />
-					<PokeFilter pokefilter= {this.handleText} />
+					<PokeFilter pokefilter={this.handleText} activeFav={this.activeFav}/>
 					{this.showPokemons()}
 				</div>
 			</MuiThemeProvider>
