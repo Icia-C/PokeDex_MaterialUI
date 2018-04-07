@@ -112,8 +112,7 @@ class App extends Component {
 	}
 
 	handlePokemonFav(pokemonid) {
-
-	let favourites = this.state.pkFavourite;
+		let favourites = this.state.pkFavourite;
 		if (this.state.pkFavourite.includes(pokemonid)){
 			//if this pokemon was fav, delete it from the fav pokemon array
 			//favourites = favourites.splice(favourites.indexOf(pokemonid), 1);
@@ -143,12 +142,16 @@ class App extends Component {
 
 	showPokemons(){
 		let pokeMonster = this.state.pkStore;
+		let pkFavourite = (typeof(this.state.pkFavourite) !== 'undefined') ?
+			this.state.pkFavourite : [];
 
 		//Filter
-		pokeMonster = this.state.pkStore.filter(pokemon =>     pokemon.name.toLowerCase().includes(this.state.pkName));
+		pokeMonster = this.state.pkStore.filter(pokemon =>
+			pokemon.name.toLowerCase().includes(this.state.pkName));
 
 		if (this.state.onlyFavs) {
-			pokeMonster = pokeMonster.filter(pokemon => this.state.pkFavourite.includes(pokemon.id));
+			pokeMonster = pokeMonster.filter(pokemon =>
+				pkFavourite.includes(pokemon.id));
 		}
 
 		if(this.state.loading){
@@ -160,7 +163,7 @@ class App extends Component {
 			return (
 				<GridList className="grid" cellHeight={'auto'} >
 					{pokeMonster.map((pokemon, i) =>
-						<Pokemon key={i} poke={pokemon} fav={this.state.pkFavourite.includes(pokemon.id)} handlePokemonFav={this.handlePokemonFav}/>
+						<Pokemon key={i} poke={pokemon} fav={pkFavourite.includes(pokemon.id)} handlePokemonFav={this.handlePokemonFav}/>
 					)}
 				</GridList>
 			);
