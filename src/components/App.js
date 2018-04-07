@@ -151,7 +151,7 @@ class App extends Component {
 			pokeMonster = pokeMonster.filter(pokemon => this.state.pkFavourite.includes(pokemon.id));
 		}
 
-		if(this.state.loading === true){
+		if(this.state.loading){
 			return(
 				<CircularProgress size={80} thickness={5} />
 			);
