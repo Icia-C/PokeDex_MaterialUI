@@ -5,37 +5,48 @@ import ActionFavorite from 'material-ui/svg-icons/action/favorite';
 import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 class PokeCard extends React.Component{
-	handleClose = () => {
+	constructor(props){
+		super(props);
+
+		this.handleClose = this.handleClose.bind(this);
+	}
+
+	handleClose() {
 		this.setState({open: false});
 	};
 
 	render(){
 		const actions = [
-			<Link className="link" to='/'>
+			<Link to='/'>
 				<FlatButton
-					label="Close"
-					primary={true}
-					onClick={this.handleClose}
+						label="Close"
+						primary={true}
+						onClick={this.handleClose}
 				/>
 			</Link>
 		];
 
 		return (
 			<Dialog
-				title="Properties"
-				actions={actions}
-				modal={true}
-				open={this.props.open}
+					className="dialog"
+					title="Properties"
+					actions={actions}
+					modal={true}
+					open={this.props.open}
 			>
 				<Checkbox
-					checkedIcon={<ActionFavorite />}
-					uncheckedIcon={<ActionFavoriteBorder />}
-					label="Like"
-					onClick={() => this.props.handlePokemonFav(this.props.poke.id)}
-					checked={this.props.fav}
+						checkedIcon={<ActionFavorite />}
+						uncheckedIcon={<ActionFavoriteBorder />}
+						label="Like"
+						onCheck={() => this.props.handlePokemonFav(this.props.poke.id)}
+						checked={this.props.fav}
 				/>
 				<div className="pk__modal">
-					<Paper className="pk__modal--paper" zDepth={3} circle={true}>
+					<Paper
+							className="pk__modal--paper"
+							zDepth={3}
+							circle={true}
+					>
 						<img className="pk__img--card" src={this.props.poke.sprites.front_default} alt="pokemon"/>
 					</Paper>
 					<h2 className="pk__title" >#{this.props.poke.id} {this.props.poke.name}</h2>

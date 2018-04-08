@@ -10,8 +10,28 @@ body {
 	flex-direction: column;
 	align-items: center;
 }
-.pk__title {
-	text-transform: capitalize;
+.grid {
+	margin: 0 !important;
+	justify-content: center;
+	& > div {
+		width: auto !important;
+		perspective: 850px;
+	}
+}
+.box__paper {
+	padding-bottom: 25px;
+	width: 200px;
+	margin: 20px;
+	text-align: center;
+	display: inline-block;
+	transition: transform 1s ease-out, box-shadow 1s ease-out;
+	&:hover {
+		transform: rotateX(10deg);
+		box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px !important;
+	}
+}
+.box__paper--fav-true {
+	background-color: #e1fffe !important;
 }
 .pk__img--card {
 	width: 100%;
@@ -21,6 +41,9 @@ body {
 	image-rendering: -moz-crisp-edges; // Firefox 3.6+
 	image-rendering: -o-crisp-edges; // Opera 12
 	image-rendering: pixelated; // Chrome 41+ and Opera 26+
+}
+.pk__title {
+	text-transform: capitalize;
 }
 .pk__type {
 	margin: 7px;
@@ -40,28 +63,8 @@ body {
 		opacity: 0.5;
 	}
 }
-
-.box__paper {
-	height: 250px;
-	width: 200px;
-	margin: 20px;
-	text-align: center;
-	display: inline-block;
-	transition: transform 1s ease-out, box-shadow 1s ease-out;
-	&:hover {
-		transform: rotateX(10deg);
-		box-shadow: rgba(0, 0, 0, 0.16) 0px 8px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px !important;
-	}
-}
-.box__paper--fav-true {
-	background-color: #e1fffe !important;
-}
-
 //CSS Pokemon Tipes
-.pk__type--poison {
-	background: $poison;
-
-}
+.pk__type--poison {background: $poison;}
 .pk__type--grass {background: $grass;}
 .pk__type--fire {background: $fire;}
 .pk__type--water {background: $water;}
@@ -70,24 +73,21 @@ body {
 .pk__type--normal {background: $normal;}
 .pk__type--electric {background: $electric;}
 
+.dialog {
+	overflow-y: scroll;
+}
+.dialog > div > div > div > div {
+	max-height: 100% !important;
+}
+.pk__modal--paper {
+	margin: 20px;
+	text-align: center;
+	width: 200px;
+	background: linear-gradient(-180deg, red 50%, white 50%);
+}
 .pk__type--profile {
 	line-height: 25px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-.grid {
-	margin: 0 !important;
-	justify-content: center;
-}
-.grid > div {
-	width: auto !important;
-	perspective: 850px;
-}
-.pk__modal--paper {
-	margin: 20px;
-	text-align: center;
-	height: 200px;
-	width: 200px;
-	background: linear-gradient(-180deg, red 50%, white 50%);
 }

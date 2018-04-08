@@ -112,10 +112,11 @@ class App extends Component {
 	}
 
 	handlePokemonFav(pokemonid) {
-		let favourites = this.state.pkFavourite;
-		if (this.state.pkFavourite.includes(pokemonid)){
+		let favourites = (typeof(this.state.pkFavourite) !== 'undefined') ?
+			this.state.pkFavourite : [];
+
+		if (favourites.includes(pokemonid)){
 			//if this pokemon was fav, delete it from the fav pokemon array
-			//favourites = favourites.splice(favourites.indexOf(pokemonid), 1);
 			favourites = favourites.filter(id => id !== pokemonid)
 		}
 		else {
@@ -141,12 +142,11 @@ class App extends Component {
 	};
 
 	showPokemons(){
-		let pokeMonster = this.state.pkStore;
 		let pkFavourite = (typeof(this.state.pkFavourite) !== 'undefined') ?
 			this.state.pkFavourite : [];
 
 		//Filter
-		pokeMonster = this.state.pkStore.filter(pokemon =>
+		let pokeMonster = this.state.pkStore.filter(pokemon =>
 			pokemon.name.toLowerCase().includes(this.state.pkName));
 
 		if (this.state.onlyFavs) {
@@ -161,9 +161,17 @@ class App extends Component {
 		}
 		else{
 			return (
-				<GridList className="grid" cellHeight={'auto'} >
+				<GridList
+						className="grid"
+						cellHeight={'auto'}
+				>
 					{pokeMonster.map((pokemon, i) =>
-						<Pokemon key={i} poke={pokemon} fav={pkFavourite.includes(pokemon.id)} handlePokemonFav={this.handlePokemonFav}/>
+						<Pokemon
+								key={i}
+								poke={pokemon}
+								fav={pkFavourite.includes(pokemon.id)}
+								handlePokemonFav={this.handlePokemonFav}
+						/>
 					)}
 				</GridList>
 			);
@@ -175,7 +183,10 @@ class App extends Component {
 			<MuiThemeProvider>
 				<div className='box__container'>
 					<Header />
-					<PokeFilter pokefilter={this.handleText} activeFav={this.activeFav}/>
+					<PokeFilter
+							pokefilter={this.handleText} 
+							activeFav={this.activeFav}
+					/>
 					{this.showPokemons()}
 				</div>
 			</MuiThemeProvider>

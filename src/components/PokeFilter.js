@@ -6,14 +6,14 @@ class PokeFilter extends React.Component {
 		return(
 			<div>
 				<TextField
-					hintText="Pokemon"
-					floatingLabelText="Find your favourite Pokemon"
-					onChange={this.props.pokefilter}
+						hintText="Pokemon"
+						floatingLabelText="Find your favourite Pokemon"
+						onChange={this.props.pokefilter}
 				/>
 				<Toggle
-					label="Favourites"
-					labelPosition="right"
-					onClick={this.props.activeFav}
+						label="Favourites"
+						labelPosition="right"
+						onClick={this.props.activeFav}
 				/>
 			</div>
 		)
